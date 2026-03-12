@@ -1,0 +1,32 @@
+---
+import employees from "@data/employees.json";
+import DynamicImage from "./helpers/DynamicImage.astro";
+import DynamicIcon from "./helpers/DynamicIcon.astro";
+---
+
+{
+  employees.map((employee) => (
+    <DynamicImage
+      imagePath={employee.img}
+      altText={employee.name}
+      width={200}
+      height={200}
+    />
+  ))
+};
+
+<div class="card">
+  <div class="imgContainer">
+    <img src="/src/assets/images/test.png" />
+    <p class="jobTitle">CEO at Company</p>
+  </div>
+  <div class="text">
+    <h2>Sarah Jasmine</h2>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo quos
+      ipsam quia aperiam consectetur, labore, omnis doloribus, facere veritatis
+      ad ullam cupiditate error doloremque iste! Eius dolore possimus quae
+      adipisci.
+    </p>
+  </div>
+</div>
