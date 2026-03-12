@@ -1,0 +1,18 @@
+/* Globale styles her */
+@font-face {
+  font-family: Cabin;
+  src: url(/src/assets/fonts/Cabin-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: Lato;
+  src: url(/src/assets/fonts/Lato-Regular.ttf);
+}
+
+h1, h2, h3, h4, h5{
+  font-family: Cabin;
+}
+
+p, a{
+  font-family: Lato;
+}
