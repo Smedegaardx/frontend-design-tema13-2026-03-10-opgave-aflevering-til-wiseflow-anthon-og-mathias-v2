@@ -1,7 +1,6 @@
 ---
 import employees from "@data/employees.json";
 import DynamicImage from "./helpers/DynamicImage.astro";
-import DynamicIcon from "./helpers/DynamicIcon.astro";
 import Facebook from "@icons/facebook.svg";
 import Instagram from "@icons/instagram.svg";
 import "@styles/main.css";
@@ -13,23 +12,22 @@ console.log(employeeId);
 console.log(employee);
 ---
 
-{
-  employee && (
-    <DynamicImage
-      imagePath={employee.img}
-      altText={employee.name}
-      width={200}
-      height={200}
-    />
-  )
-}
 <div class="card">
   <div class="imgContainer">
-    <img src="/src/assets/images/test.png" />
+    {
+      employee && (
+        <DynamicImage
+          imagePath={employee.img}
+          altText={employee.name}
+          width={400}
+          height={400}
+        />
+      )
+    }
     <p class="jobTitle">{employee?.title}</p>
   </div>
   <div class="text">
-    <h2>{employee?.name}</h2>
+    <h3>{employee?.name}</h3>
     <p>
       {employee?.description}
     </p>
@@ -42,12 +40,9 @@ console.log(employee);
 
 <style>
   .card {
-    max-width: 350px;
     .imgContainer {
       display: grid;
-      img {
-        width: 350px;
-        height: auto;
+      :first-child {
         grid-row: 1;
         grid-column: 1;
         border-radius: 25px;
@@ -72,7 +67,7 @@ console.log(employee);
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      h2 {
+      h3 {
         font-size: x-large;
       }
       .icons {
