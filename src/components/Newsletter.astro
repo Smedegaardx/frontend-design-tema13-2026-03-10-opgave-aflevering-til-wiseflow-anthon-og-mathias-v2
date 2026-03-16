@@ -1,0 +1,62 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="top">
+  <h2>Stay updated</h2>
+  <h1>Subscribe Our Newsletter</h1>
+  <p>Build stronger Customer Relationships with <span>Consultalk</span></p>
+  <div class="form">
+    <input type="text" placeholder="your mail adress" />
+    <Button buttonText="Subscribe" theme="yellow" />
+  </div>
+</div>
+
+<style>
+  @layer components {
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 60px 0;
+
+      h1 {
+        color: white;
+        font-size: 35px;
+        margin: 12px 0;
+      }
+
+      h2 {
+        color: var(--color-action);
+        text-transform: uppercase;
+        font-size: 16px;
+        line-height: 147.5%;
+        letter-spacing: 2.32px;
+      }
+
+      span {
+        color: var(--color-action);
+      }
+
+      .form {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 32px;
+      }
+
+      input {
+        padding: 10px 20px;
+        margin: 4px 2px;
+        border-radius: 42px;
+        height: 44px;
+        border: 1px solid var(--color-text-weak);
+        color: var(--color-text-weak);
+      }
+      p {
+        color: var(--color-text-weak);
+      }
+    }
+  }
+</style>

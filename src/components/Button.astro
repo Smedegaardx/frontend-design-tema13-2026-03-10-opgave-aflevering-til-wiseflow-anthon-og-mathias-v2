@@ -1,0 +1,62 @@
+---
+const { buttonText, theme } = Astro.props;
+---
+
+<button data-theme={theme}>
+  {buttonText}
+</button>
+
+<style>
+  @layer components {
+    button {
+      border: none;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 4px 2px;
+      border-radius: 42px;
+      cursor: pointer;
+      font-family: lato;
+      max-width: 200px;
+      max-height: 60px;
+    }
+
+    button[data-theme="yellow"] {
+      background-color: var(--color-action);
+      color: black;
+    }
+
+    button:hover[data-theme="yellow"] {
+      box-shadow: 0px 0px 0px 1px var(--color-action) inset;
+      background-color: transparent;
+    }
+
+    button[data-theme="black"] {
+      background-color: var(--color-text);
+      color: white;
+    }
+
+    button:hover[data-theme="black"] {
+      box-shadow: 0px 0px 0px 1px var(--color-text) inset;
+      color: black;
+      background-color: transparent;
+    }
+
+    button[data-theme="login"] {
+      background-color: white;
+      padding: 3px 20px;
+    }
+
+    button[data-theme="white"] {
+      background-color: white;
+      color: black;
+    }
+
+    button:hover[data-theme="white"] {
+      box-shadow: 0px 0px 0px 1px white inset;
+      background-color: transparent;
+      color: white;
+    }
+  }
+</style>

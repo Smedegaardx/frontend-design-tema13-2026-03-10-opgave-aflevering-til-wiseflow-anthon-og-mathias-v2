@@ -1,5 +1,6 @@
 ---
 import "@styles/main.css";
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -8,13 +9,15 @@ import "@styles/main.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
+    <title>{title}</title>
     <style is:inline>
       @layer reset, global, tokens, components, overrides;
     </style>
   </head>
   <body>
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
 

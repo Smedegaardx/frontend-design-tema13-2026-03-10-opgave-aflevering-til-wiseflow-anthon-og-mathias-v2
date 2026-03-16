@@ -1,0 +1,48 @@
+---
+import Logo from "@components/Logo.astro";
+import Button from "./Button.astro";
+---
+
+<header>
+  <div>
+    <Logo />
+    <ul>
+      <a href="/">Home</a>
+      <a href="/">Case Study</a>
+      <a href="/">Team</a>
+      <a href="/">About</a>
+    </ul>
+    <Button buttonText="Login" theme="login" />
+  </div>
+</header>
+
+<style>
+  @layer components {
+    header {
+      background-color: var(--color-neutrals-900);
+      height: 112px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    ul {
+      padding: 0;
+      display: flex;
+      gap: 30px;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    p {
+      display: inline-block;
+    }
+  }
+</style>

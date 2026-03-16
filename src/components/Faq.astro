@@ -1,0 +1,102 @@
+---
+import faqData from "@data/faq.json";
+---
+
+<section>
+  <div class="faq-wrapper">
+    <div class="text-container">
+      <p class="tag">FAQ</p>
+      <h1>Customer Questions</h1>
+    </div>
+    <div class="faq-container">
+      {
+        faqData.faq.map(({ question, answer }) => (
+          <details name="faq">
+            <summary>{question}</summary>
+            <div class="content">
+              <p class="faq-answer">{answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    section {
+      margin: 2rem 0;
+    }
+
+    .faq-wrapper {
+      max-width: 50rem;
+      width: 100%;
+      margin-inline: auto;
+      background-color: var(--color-neutrals-100);
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+
+    .text-container {
+      text-align: center;
+    }
+
+    .tag {
+      letter-spacing: 2.32px;
+    }
+
+    h1 {
+      font-size: 45px;
+    }
+
+    .faq-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 50rem;
+      width: 100%;
+      margin-inline: auto;
+    }
+
+    summary {
+      font-family: Cabin-med;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: 1.25rem;
+      border-bottom: 1px solid var(--color-neutrals-200);
+      list-style: none;
+
+      &::marker,
+      &::-webkit-details-marker {
+        display: none;
+        content: "";
+      }
+    }
+    summary::after {
+      content: "+";
+      font-family: system-ui;
+      font-weight: 400;
+      font-size: 1.1rem;
+    }
+
+    [open]summary::after {
+      content: "-";
+    }
+
+    [open]summary {
+      border-bottom: none;
+    }
+
+    .content {
+      border-bottom: 1px solid var(--color-neutrals-200);
+      padding-bottom: 20px;
+    }
+
+    .faq-answer {
+      color: var(--color-text-muted);
+    }
+  }
+</style>

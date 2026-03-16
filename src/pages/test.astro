@@ -1,0 +1,20 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Button from "@components/Button.astro";
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
+import Corevalues from "@components/Corevalues.astro";
+import Faq from "@components/Faq.astro";
+import CaseStudyArticle from "@components/CaseStudyArticle.astro";
+---
+
+<Layout title="Legeplads">
+  <Navbar />
+  <CaseStudyArticle />
+  <Corevalues theme="light" btnTheme="black" />
+  <Corevalues theme="dark" btnTheme="white" />
+  <Faq />
+  <!-- <Button buttonText="Book a Meeting" theme="yellow" /> -->
+  <!-- <Button buttonText="Meet the Team" theme="black" /> -->
+  <Footer />
+</Layout>
