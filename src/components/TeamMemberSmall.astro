@@ -26,12 +26,12 @@ console.log(employee);
 <div class="card">
   <div class="imgContainer">
     <img src="/src/assets/images/test.png" />
-    <p class="jobTitle">CEO at Company</p>
+    <p class="jobTitle">{employee?.title}</p>
   </div>
   <div class="text">
-    <h2>Sarah Jasmine</h2>
+    <h2>{employee?.name}</h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque, placeat.
+      {employee?.description}
     </p>
     <div class="icons">
       <Instagram width={32} height={32} class="my-icon" />
