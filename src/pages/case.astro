@@ -1,10 +1,19 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import CaseStudyArticle from "@components/CaseStudyArticle.astro";
+import SideHeader from "@components/SideHeader.astro";
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
 ---
 
 <Layout>
-  <!-- Banner -->
-
+  <Navbar />
+  <SideHeader
+    side="left"
+    page="case studies"
+    text="Our achievements reflect the close collaboration between our expert teams and our esteemed clientele. We cultivate a workplace that champions peak performance and guarantees client satisfaction."
+    heading="Taxes & Efficiency"
+  />
   <CaseStudyArticle />
+  <Footer />
 </Layout>
