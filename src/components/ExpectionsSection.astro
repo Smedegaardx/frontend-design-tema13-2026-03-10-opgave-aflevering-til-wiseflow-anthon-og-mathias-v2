@@ -2,6 +2,7 @@
 import CheckmarkCard from "@components/CheckmarkCard.astro";
 import SectionImg from "@data/images/temaopg.webp";
 import { Image } from "astro:assets";
+import Checkmark from "@icons/checkmark.svg";
 ---
 
 <section>
@@ -22,12 +23,17 @@ import { Image } from "astro:assets";
       </p>
     </div>
     <div class="card-content">
-      <p>test</p>
-      <p>test</p>
+      <CheckmarkCard
+        text="Collaborate to build actionable strategies that drive sustainable growth and
+    deliver tangible outcomes."
+      />
+      <CheckmarkCard
+        text="Identify opportunities to optimize processes and implement impactful
+          solutions with measurable results."
+      />
     </div>
   </article>
 </section>
-<CheckmarkCard texcontent="test" />
 
 <style>
   @layer components {
@@ -40,6 +46,7 @@ import { Image } from "astro:assets";
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
+        gap: 2rem;
       }
 
       .img-wrapper {
@@ -54,7 +61,7 @@ import { Image } from "astro:assets";
         left: -20px;
         width: 160px;
         height: 130px;
-        background-color: #b8f0c0;
+        background-color: var(--color-ui-secondary);
         border-radius: 1rem;
         z-index: 0;
       }
@@ -68,6 +75,43 @@ import { Image } from "astro:assets";
 
       .text-content {
         grid-column: 2;
+      }
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+      }
+
+      .my-icon {
+        color: var(--color-ui-secondary-alternative);
+      }
+
+      .tag {
+        font-size: 0.8125rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 800;
+        margin: 0;
+      }
+
+      .description {
+        font-size: 1rem;
+        line-height: 1.65;
+        max-width: 52ch;
+        margin: 0;
+        opacity: 0.85;
       }
     }
   }
