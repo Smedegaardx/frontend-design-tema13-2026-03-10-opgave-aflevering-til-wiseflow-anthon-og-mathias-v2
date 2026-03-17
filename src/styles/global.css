@@ -22,9 +22,10 @@ p, a{
   font-family: Lato;
 }
 
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
 
-/* Spørg lige Anthon om han er med på det her */
-/* Basically så wrap alt indhold i en section, så få det automatisk rette bredde */
 /* Grid */
   body {
     display: grid;

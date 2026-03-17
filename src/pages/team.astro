@@ -8,19 +8,19 @@ import Footer from "@components/Footer.astro";
 
 <Layout>
   <Navbar />
-  <section>
+  <div class="grid flow">
+    <h2>Meet Our Great Team</h2>
+    <p>
+      Welcome to our amazing team! We are a group of passionate individuals
+      dedicated to excellence and innovation. Each member brings unique skills
+      and experiences, working together to achieve our goals. Join us as we
+      embark on exciting projects and create lasting impacts.
+    </p>
     <div>
-      <h2>Meet Our Great Team</h2>
-      <p>
-        Welcome to our amazing team! We are a group of passionate individuals
-        dedicated to excellence and innovation. Each member brings unique skills
-        and experiences, working together to achieve our goals. Join us as we
-        embark on exciting projects and create lasting impacts.
-      </p>
+      <Button buttonText="Join our team" theme="black" />
     </div>
-    <div></div>
-    <Button buttonText="Join our team" theme="black" />
-  </section>
+  </div>
+
   <div id="members">
     <TeamMemberSmall employeeId={1} size="large" />
     <TeamMemberSmall employeeId={2} size="large" />
@@ -36,12 +36,27 @@ import Footer from "@components/Footer.astro";
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2rem 4rem;
-    grid-column: 2;
+    margin-block-end: 4rlh;
   }
 
-  section {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-block: 1rlh;
     h2 {
       font-size: 36px;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    p {
+      grid-column: 1;
+      grid-row: 2;
+      max-width: 70ch;
+    }
+    :last-child {
+      grid-column: 2;
+      grid-row: 2;
+      align-self: end;
     }
   }
 </style>

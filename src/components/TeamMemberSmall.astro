@@ -6,9 +6,6 @@ import Instagram from "@icons/instagram.svg";
 
 const { employeeId, size } = Astro.props;
 const employee = employees.find((e) => e.id === Number(employeeId));
-
-console.log(employeeId);
-console.log(employee);
 ---
 
 <div class="card" data-size={size}>
