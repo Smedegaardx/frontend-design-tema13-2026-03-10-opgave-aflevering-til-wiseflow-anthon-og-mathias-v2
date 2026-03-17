@@ -1,0 +1,34 @@
+---
+
+---
+
+<section></section>
+
+<style>
+  @layer components {
+    section {
+      padding: 8lh 1lh;
+
+      --grid-color: #ffcc4a;
+      --grid-size: 60px;
+      --grid-opacity:
+        18%
+          background: conic-gradient(
+            from 180deg af 1px 1px,
+            hsl(from var(--grid-color) h s l / (var(--grid-opacity))) 75%,
+            #0000 0
+          ) -1px -1px /
+          var(--grid-size) var(--grid-size) repeat repeat,
+        #000;
+      /* Eventuelt byt repeat repeat ud med round round, eller bare slet det */
+      /* hsl % er ligmed "opacity" */
+      /* farvekoden i hsl kan skiftes ud med var(--action-color) */
+
+      /* background-color: #000;
+            background-position: -1px -1px;
+            background-image: conic-gradient(from 180deg af 1px 1px, red 75%, #0000 0);
+            background-size: 60px 60px; */
+      color: #fff;
+    }
+  }
+</style>
