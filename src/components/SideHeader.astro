@@ -1,0 +1,71 @@
+---
+const { page, heading, text, side } = Astro.props;
+---
+
+<div class="flow breakout header">
+  <p class="page">{page}</p>
+  <div data-side={side}>
+    <h1>{heading}</h1>
+    <span class="left"></span>
+    <span class="orange"></span>
+    <span class="right"></span>
+  </div>
+  <p class="text">
+    {text}
+  </p>
+</div>
+
+<style>
+  @layer components {
+    .header {
+      text-align: center;
+      padding-block: 4rlh 6rlh;
+      background-color: var(--color-surface-secondary);
+      .page {
+        text-transform: uppercase;
+        letter-spacing: 0.3ch;
+      }
+      div {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        --flow-space: 0.5rlh;
+        h1 {
+          font-size: 48px;
+          grid-column: 2;
+          z-index: 500;
+        }
+        span {
+          --flow-space: 0;
+          border-bottom: 7px solid var(--color-yellow-500);
+          width: 100%;
+          display: block;
+          grid-row: 2;
+        }
+        .left {
+          grid-column: 1;
+        }
+        .orange {
+          grid-column: 2;
+        }
+        .right {
+          grid-column: 3;
+        }
+        &[data-side="left"] {
+          .right {
+            border-color: var(--color-surface-secondary);
+          }
+        }
+        &[data-side="right"] {
+          .left {
+            border-color: var(--color-surface-secondary);
+          }
+        }
+      }
+      .text {
+        max-width: 65ch;
+        margin-inline: auto;
+        --flow-space: 1.5rlh;
+      }
+    }
+  }
+</style>
