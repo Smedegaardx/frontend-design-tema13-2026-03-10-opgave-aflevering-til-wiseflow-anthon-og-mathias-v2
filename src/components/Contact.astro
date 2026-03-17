@@ -1,0 +1,184 @@
+---
+import Phone from "@icons/phone.svg";
+import Clock from "@icons/clock.svg";
+import Pin from "@icons/pin.svg";
+---
+
+<section>
+  <div class="container">
+    <div class="text">
+      <p class="tag">Process</p>
+      <h2>Contact Us. It's Easy.</h2>
+      <p class="description">
+        Leverage agile frameworks to provide a robust synopsis for high level
+        overviews. Iterative approaches to corporate strategy foster
+        collaborative.
+      </p>
+      <div class="icon-container">
+        <div class="card">
+          <div class="icon-wrapper" data-color="yellow">
+            <Phone width={32} height={32} class="my-icon" />
+          </div>
+          <div class="card-text">
+            <p class="card-tag">Call Today</p>
+            <p class="card-description">+1 800 100 900</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon-wrapper" data-color="green">
+            <Clock width={32} height={32} class="my-icon" />
+          </div>
+          <div class="card-text">
+            <p class="card-tag">Monday to Friday</p>
+            <p class="card-description">9AM - 5PM</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon-wrapper" data-color="grey">
+            <Pin width={32} height={32} class="my-icon" />
+          </div>
+          <div class="card-text">
+            <p class="card-tag">USA Office</p>
+            <p class="card-description">195 Devonshire St Boston, MA 02110</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="img-container">
+      <div class="img-wrapper" id="pic1">
+        <div class="green-box"></div>
+        <img src="/src/data/images/contact1.webp" alt="" />
+      </div>
+      <img src="/src/data/images/contact2.webp" alt="" id="pic2" />
+      <img src="/src/data/images/contact3.webp" alt="" id="pic3" />
+    </div>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    .container {
+      display: grid;
+      grid-template-columns: auto 2fr;
+      gap: 50px;
+      padding: 2rem 4rem;
+    }
+
+    .img-container {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: 1fr 1fr;
+      grid-gap: 20px 24px;
+    }
+
+    .img-wrapper {
+      position: relative;
+    }
+
+    .green-box {
+      position: absolute;
+      bottom: -20px;
+      left: -50px;
+      width: 307px;
+      height: 164px;
+      background-color: var(--color-ui-secondary);
+      border-radius: 1rem;
+      z-index: -1;
+    }
+    #pic1 {
+      grid-column: 1;
+      grid-row: 1 / -1;
+      align-self: end;
+      justify-self: end;
+    }
+
+    #pic2 {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    #pic3 {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .tag {
+      font-size: 0.8125rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 35ch;
+      margin: 0;
+      opacity: 0.85;
+    }
+
+    .icon-wrapper {
+      border-radius: 50%;
+      padding: 0.75rem;
+      height: 52px;
+      width: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      .my-icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .icon-wrapper[data-color="yellow"] {
+      background-color: #ffecbb;
+
+      .my-icon {
+        color: #deaa27;
+      }
+    }
+
+    .icon-wrapper[data-color="green"] {
+      background-color: #a4eda4;
+
+      .my-icon {
+        color: #4eaf4e;
+      }
+    }
+    .icon-wrapper[data-color="grey"] {
+      background-color: #eaeaea;
+
+      .my-icon {
+        color: #030712;
+      }
+    }
+
+    .card-description {
+      font-family: cabin;
+      margin-top: 0.2rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .icon-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+  }
+</style>
