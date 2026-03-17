@@ -1,8 +1,13 @@
 ---
+import Layout from "@layouts/Layout.astro";
 import TeamMemberSmall from "@components/TeamMemberSmall.astro";
+import Button from "@components/Button.astro";
+import Navbar from "@components/Navbar.astro";
+import Footer from "@components/Footer.astro";
 ---
 
-<body>
+<Layout>
+  <Navbar />
   <section>
     <div>
       <h2>Meet Our Great Team</h2>
@@ -14,7 +19,7 @@ import TeamMemberSmall from "@components/TeamMemberSmall.astro";
       </p>
     </div>
     <div></div>
-    <button>Join our team</button>
+    <Button buttonText="Join our team" theme="black" />
   </section>
   <div id="members">
     <TeamMemberSmall employeeId={1} size="large" />
@@ -24,21 +29,17 @@ import TeamMemberSmall from "@components/TeamMemberSmall.astro";
     <TeamMemberSmall employeeId={5} size="large" />
     <TeamMemberSmall employeeId={6} size="large" />
   </div>
-</body>
-
+  <Footer />
+</Layout>
 <style>
-  body {
-    max-width: 1200px;
-    margin: 0 auto;
-    #members {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 2rem 4rem;
-    }
-  }
-  section {
+  #members {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem 4rem;
+    grid-column: 2;
+  }
+
+  section {
     h2 {
       font-size: 36px;
     }
