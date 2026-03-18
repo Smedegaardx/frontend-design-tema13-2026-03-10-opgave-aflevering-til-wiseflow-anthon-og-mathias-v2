@@ -1,0 +1,86 @@
+---
+import Counter from "./counter.astro";
+import CheckmarkCard from "./CheckmarkCard.astro";
+---
+
+<section>
+  <div class="grid">
+    <div class="textSection flow">
+      <p>OUR VISION</p>
+      <h2>Turn your ideas into reality.</h2>
+      <p>
+        Capitalize on low hanging fruit to identify a ballpark value added
+        activity beta test. Override the digital divide with additional from
+        DevOps.
+      </p>
+      <!-- Checkmarkcard
+      Checkmarkcard -->
+    </div>
+    <div class="imgContainer">
+      <div class="greenbox"></div>
+      <img src="/src/assets/images/test.png" />
+    </div>
+  </div>
+  <div class="counters">
+    <Counter text="Succesful Work" number="1128" />
+    <Counter text="Team Members" number="908" />
+    <Counter text="Happy Customers" number="258" />
+    <Counter text="Creative Ideas" number="564" />
+  </div>
+</section>
+
+<style>
+  @layer components {
+    section {
+      margin-block: 4rlh;
+      .grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        .textSection {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          align-items: start;
+          h2 {
+            font-size: 42px;
+            --flow-space: 0.8rlh;
+          }
+          p {
+            max-width: 65ch;
+            --flow-space: 0.7rlh;
+            &:first-of-type {
+              letter-spacing: 0.3ch;
+            }
+            &:last-of-type {
+              color: var(--color-neutrals-700);
+              margin-block-end: 1rlh;
+            }
+          }
+        }
+        .imgContainer {
+          display: grid;
+          img {
+            grid-row: 1;
+            grid-column: 1;
+            border-radius: 25px;
+          }
+          .greenbox {
+            background-color: var(--color-green-400);
+            width: 200px;
+            height: 150px;
+            border-radius: 25px;
+            grid-row: 1;
+            grid-column: 1;
+            justify-self: end;
+            margin: -1.5rem -3rem;
+          }
+        }
+      }
+      .counters {
+        margin-top: 3rlh;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+  }
+</style>
