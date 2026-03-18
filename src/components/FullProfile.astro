@@ -1,0 +1,113 @@
+---
+import employees from "@data/employees.json";
+import DynamicImage from "./helpers/DynamicImage.astro";
+import Facebook from "@icons/facebook.svg";
+import Instagram from "@icons/instagram.svg";
+
+const { slug } = Astro.props;
+const employee = employees.find((e) => e.slug === slug);
+console.log("this is the slug", slug);
+console.log("this is the employee", employee);
+---
+
+<article>
+  <div class="imgSection">
+    <div class="imgContainer">
+      <div class="image">
+        {
+          employee && (
+            <DynamicImage
+              imagePath={employee.img}
+              altText={employee.name}
+              width={400}
+              height={400}
+            />
+          )
+        }
+      </div>
+      <div class="greenbox"></div>
+    </div>
+    <div class="icons">
+      <Facebook width={32} height={32} class="my-icon" />
+      <Instagram width={32} height={32} class="my-icon" />
+    </div>
+  </div>
+  <div class="textSection flow">
+    <div class="profileText flow">
+      <h2>{employee?.name}</h2>
+      <p class="jobTitle">{employee?.title}</p>
+      <p>{employee?.description_long}</p>
+    </div>
+    <div class="experienceText flow">
+      <h2>Past experience</h2>
+      <p>{employee?.past_experience}</p>
+    </div>
+  </div>
+</article>
+
+<style>
+  @layer components {
+    article {
+      margin-block: 4rlh;
+      .icons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .imgContainer {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        gap: 1rem;
+        .image {
+          border-radius: 25px;
+          overflow: clip;
+          margin: 0 auto;
+          grid-row: 1;
+          grid-column: 1;
+          z-index: 1;
+        }
+        .greenbox {
+          background-color: var(--color-green-400);
+          width: 200px;
+          height: 150px;
+          border-radius: 25px;
+          grid-row: 1;
+          grid-column: 1;
+          margin: -2.5rem 3rem;
+        }
+      }
+      .textSection {
+        display: grid;
+        gap: 1rlh;
+        .profileText {
+          border-bottom: 1px var(--color-neutrals-400) solid;
+          padding-bottom: 1.5rlh;
+        }
+        h2 {
+          font-size: 36px;
+        }
+        p {
+          color: var(--color-neutrals-700);
+        }
+        .jobTitle {
+          --flow-space: 0.2rlh;
+          font-size: 18px;
+        }
+        .jobTitle + p {
+          --flow-space: 1rlh;
+        }
+      }
+    }
+    @media (width > 1000px) {
+      article {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (width < 1000px) {
+      article {
+        margin-inline: 2rlh;
+      }
+    }
+  }
+</style>

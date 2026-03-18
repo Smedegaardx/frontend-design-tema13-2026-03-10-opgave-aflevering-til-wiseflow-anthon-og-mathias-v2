@@ -1,0 +1,57 @@
+---
+import TeamMember from "./TeamMember.astro";
+import Button from "./Button.astro";
+---
+
+<article>
+  <div class="textSection flow">
+    <p>OUR TEAM</p>
+    <h2>We champion the bold</h2>
+    <p>
+      Our success stems from the synergy between dedicated teams and our valued
+      clients. We prioritize a company culture that fosters exceptional
+      productivity, ensures customer satisfaction.
+    </p>
+    <Button theme="black" buttonText="Meet the team" />
+  </div>
+  <div class="images">
+    <TeamMember employeeId="1" />
+    <TeamMember employeeId="2" />
+  </div>
+</article>
+
+<style>
+  @layer components {
+    article {
+      margin-block: 4rlh;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 1rlh;
+      .textSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        h2 {
+          font-size: 42px;
+          max-width: 10ch;
+          --flow-space: 0.8rlh;
+        }
+        p {
+          --flow-space: 0.5rlh;
+          &:first-of-type {
+            letter-spacing: 0.3ch;
+          }
+          &:last-of-type {
+            color: var(--color-neutrals-700);
+            margin-block-end: 1rlh;
+          }
+        }
+      }
+      .images {
+        display: grid;
+        gap: 48px;
+      }
+    }
+  }
+</style>

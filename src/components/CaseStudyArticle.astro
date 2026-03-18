@@ -115,6 +115,9 @@ import Button from "./Button.astro";
       p{
         --flow-space: 1.2rlh;
         color: var(--color-neutrals-700);
+        h2 + &, h3 + &{
+          --flow-space: 0.8rlh;
+        }
       }
       li{
         --flow-space: 0.5rlh;
