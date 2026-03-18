@@ -18,6 +18,21 @@ const { theme } = Astro.props;
   ))
 }
 
+<!-- {
+  valueData.values.map((value) => (
+    <div class="card" data-theme={theme}>
+      <div class="icon-wrapper">
+        <img src={`/src/icons/${value.icon}.svg`} alt="" />
+      </div>
+      <h2>{value.title}</h2>
+      <p>{value.description}</p>
+      <a href="#99" class="read-more">
+        Read More &rarr;
+      </a>
+    </div>
+  ))
+} -->
+
 <style>
   .card {
     padding: 2rem;

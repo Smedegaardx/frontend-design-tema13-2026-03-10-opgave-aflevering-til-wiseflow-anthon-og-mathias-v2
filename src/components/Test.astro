@@ -1,0 +1,55 @@
+---
+import Button from "@components/Button.astro";
+---
+
+<!-- <article>
+  <h1>Our core values & principles</h1>
+  <p class="description">
+    Capitalize on low hanging fruit to identify a ballpark value added activity
+    beta test. Override the digital divide with additional from DevOps.
+  </p>
+  <div class="btn-wrapper">
+    <Button buttonText="Get in Touch" theme="yellow" />
+  </div>
+</article> -->
+<div>
+  <section class="team_content">
+    <h3>Meet Our Great Team</h3>
+    <p class="content_description">
+      Welcome to our amazing team! We are a group of passionate individuals
+      dedicated to excellence and innovation. Each member brings unique skills
+      and experiences, working together to achieve our goals. Join us as we
+      embark on exciting projects and create lasting impacts.
+    </p>
+    <button class="join_btn">Join Our Team</button>
+  </section>
+</div>
+<style>
+  @layer components {
+    .team_content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      margin-bottom: 2.5rem;
+    }
+
+    h3 {
+      grid-column: 1;
+      grid-row: 1;
+      margin: 0;
+    }
+
+    .content_description {
+      grid-column: 1;
+      grid-row: 2;
+      margin: 0;
+    }
+
+    .join_btn {
+      grid-column: 2;
+      grid-row: 2 / 3;
+      align-self: end;
+      justify-self: end;
+    }
+  }
+</style>

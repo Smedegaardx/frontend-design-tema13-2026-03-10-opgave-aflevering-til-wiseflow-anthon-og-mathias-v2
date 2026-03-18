@@ -1,0 +1,30 @@
+---
+import FinancialData from "@data/financialProjections.json";
+---
+
+{
+  FinancialData.values.map(({ icon, title, description }) => (
+    <div class="card">
+      <div class="icon-wrapper">
+        <img src={`/src/icons/${icon}.svg`} alt="" />
+      </div>
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </div>
+  ))
+}
+
+<style>
+  @layer components {
+    .card {
+      background-color: var(--color-neutrals-200);
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      border-radius: 1.25rem;
+      height: auto;
+      gap: 1rem;
+    }
+  }
+</style>
