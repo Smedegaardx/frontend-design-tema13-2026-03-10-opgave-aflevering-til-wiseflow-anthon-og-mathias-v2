@@ -4,7 +4,7 @@ import Button from "./Button.astro";
 ---
 
 <header>
-  <div>
+  <div class="navbar">
     <Logo />
     <ul>
       <a href="/">Home</a>
@@ -12,18 +12,36 @@ import Button from "./Button.astro";
       <a href="/">Team</a>
       <a href="/">About</a>
     </ul>
-    <Button buttonText="Login" theme="login" />
+    <button id="login-btn" popovertarget="login-popover">Login</button>
+  </div>
+  <div id="login-popover" popover>
+    <h2>Dashboard Login</h2>
+    <div class="field">
+      <label for="email">Email address</label>
+      <input type="email" id="email" autocomplete="email" />
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" autocomplete="current-password" />
+    </div>
+    <button class="submit-btn">Go to dashboard</button>
   </div>
 </header>
-
 <style>
   @layer components {
+    #mydiv {
+      text-align: center;
+      padding: 40px;
+      background-color: lightblue;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     header {
       background-color: var(--color-neutrals-900);
       height: 112px;
     }
 
-    div {
+    .navbar {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -43,6 +61,26 @@ import Button from "./Button.astro";
 
     p {
       display: inline-block;
+    }
+
+    #login-popover {
+      position: fixed;
+      /* top: 112px; */
+      /* right: 1rem; */
+      /* ... rest of styles */
+    }
+
+    /* Enhanced: anchor positioning for supporting browsers */
+    @supports (anchor-name: --x) {
+      #login-btn {
+        anchor-name: --login-btn;
+      }
+
+      #login-popover {
+        position-anchor: --login-btn;
+        position: absolute;
+        position-area: bottom left;
+      }
     }
   }
 </style>

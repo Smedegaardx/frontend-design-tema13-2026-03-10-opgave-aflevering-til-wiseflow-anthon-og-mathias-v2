@@ -1,3 +1,118 @@
 ---
-
+import experienceData from "@data/experience.json";
 ---
+
+<section>
+  <div class="content-wrapper">
+    <div class="text-container">
+      <p class="tag">experience</p>
+      <h2>More than 25 years of experience</h2>
+      <p class="description">3000+ our clients are insured around the World</p>
+    </div>
+    <div class="stats-container">
+      {
+        experienceData.stats.map(({ label, value }) => (
+          <div class="stat-container">
+            <div class="stat" style={`--percent: ${value}`} />
+            <p class="stat-label">{label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @layer components {
+    section {
+      background-color: var(--color-surface-highlight);
+      padding: 8rem 4rem;
+    }
+
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 50px;
+    }
+
+    .tag {
+      font-size: 0.8125rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      margin: 0;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 52ch;
+      margin: 0;
+      opacity: 0.85;
+    }
+
+    .stats-container {
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      width: min(400px, 100% - 1rem);
+    }
+
+    .stat {
+      --actualPercent: calc(var(--percent) * 1%);
+      --border-width: 5px;
+      aspect-ratio: 1;
+      width: 150px;
+      border-radius: calc(Infinity * 1px);
+      border: var(--border-width) solid #0000;
+      font-family: cabin;
+      background:
+        conic-gradient(var(--color-surface-highlight)) padding-box,
+        conic-gradient(
+            var(--color-surface-secondary) calc(var(--percent) * 1%),
+            #daae3c 0
+          )
+          border-box;
+      display: grid;
+      container-type: inline-size;
+
+      &::before,
+      &::after {
+        grid-area: 1 / 1;
+      }
+
+      &::after {
+        counter-reset: stat var(--percent);
+        content: counter(stat) "%";
+        place-self: center;
+        font-size: 30cqw;
+      }
+
+      &::before {
+        content: "";
+        aspect-ratio: 1;
+        border-radius: 99px;
+        offset-path: border-box;
+        offset-distance: calc(var(--percent) * 1%);
+        width: 20px;
+        background: var(--color-ui-primary);
+        border: 3px solid white;
+      }
+    }
+    .stat-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      p {
+        font-family: cabin;
+        font-size: 20px;
+      }
+    }
+  }
+</style>

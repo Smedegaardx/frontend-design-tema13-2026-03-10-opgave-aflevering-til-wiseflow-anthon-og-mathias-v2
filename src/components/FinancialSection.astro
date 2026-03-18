@@ -1,0 +1,114 @@
+---
+import ArrowL from "@icons/arrow-left.svg";
+import ArrowR from "@icons/arrow--right.svg";
+import FinancialCard from "@components/FinancialCard.astro";
+---
+
+<section>
+  <article>
+    <p class="tag">Financial Tools</p>
+    <h2>Financial Projections</h2>
+    <p class="description">
+      Financial projections are essential for planning and monitoring a
+      company’s performance. They provide insights into potential revenue,
+      expenses, and profitability over specific periods.
+    </p>
+    <div class="btn-container">
+      <a href="#99" class="arrow">
+        <ArrowL width={32} height={32} class="my-icon" />
+      </a>
+      <a href="#99" class="arrow">
+        <ArrowR width={32} height={32} class="my-icon" />
+      </a>
+    </div>
+  </article>
+  <div class="card-container breakout">
+    <FinancialCard />
+  </div>
+</section>
+
+<style>
+  @layer components {
+    section {
+      padding: 4rem 2rem;
+      background-color: var(--color-neutrals-100);
+    }
+
+    article {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto auto;
+      gap: 0.75rem 2rem;
+      margin-bottom: 2.5rem;
+      align-items: start;
+    }
+
+    .tag {
+      font-size: 0.8125rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      grid-column: 1;
+      grid-row: 1;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      grid-column: 1;
+      grid-row: 2;
+      margin: 0;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.65;
+      grid-column: 1;
+      grid-row: 3;
+      max-width: 60ch;
+      margin: 0;
+      opacity: 0.85;
+    }
+
+    .btn-container {
+      grid-column: 2;
+      grid-row: 2 / 4;
+      align-self: end;
+      justify-self: end;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .arrow {
+      border-radius: 50%;
+      padding: 0.75rem;
+      height: 52px;
+      width: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background-color: var(--color-ui-primary);
+
+      .my-icon {
+        width: 24px;
+        height: 24px;
+        color: var(--color-surface-secondary);
+      }
+    }
+
+    .arrow:hover {
+      transform: scale(1.1);
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      padding-inline: max(1rem, 50% - 1200px / 2);
+    }
+  }
+</style>
