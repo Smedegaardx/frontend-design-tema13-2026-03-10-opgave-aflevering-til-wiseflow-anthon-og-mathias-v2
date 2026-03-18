@@ -1,0 +1,52 @@
+---
+import employees from "@data/employees.json";
+import DynamicImage from "./helpers/DynamicImage.astro";
+import Facebook from "@icons/facebook.svg";
+import Instagram from "@icons/instagram.svg";
+
+const { slug } = Astro.props;
+const employee = employees.find((e) => e.slug === slug);
+console.log("this is the slug", slug);
+console.log("this is the employee", employee);
+---
+
+<article>
+  <div class="imgSection">
+    <div class="imgContainer">
+      {
+        employee && (
+          <DynamicImage
+            imagePath={employee.img}
+            altText={employee.name}
+            width={400}
+            height={400}
+          />
+        )
+      }
+    </div>
+    <div class="icons">
+      <Facebook width={32} height={32} class="my-icon" />
+      <Instagram width={32} height={32} class="my-icon" />
+    </div>
+  </div>
+  <div class="textSection">
+    <div class="profileText">
+      <h2>{employee?.name}</h2>
+      <p class="jobTitle">{employee?.title}</p>
+      <p>{employee?.description_long}</p>
+    </div>
+    <div class="experienceText">
+      <h2>Past experience</h2>
+      <p>{employee?.past_experience}</p>
+    </div>
+  </div>
+</article>
+
+<style>
+  @layer components {
+    article {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

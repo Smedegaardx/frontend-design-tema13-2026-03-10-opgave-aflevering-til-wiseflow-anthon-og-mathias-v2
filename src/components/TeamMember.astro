@@ -8,41 +8,51 @@ const { employeeId } = Astro.props;
 const employee = employees.find((e) => e.id === Number(employeeId));
 ---
 
-<div class="cardWrapper">
-  <div class="card">
-    <div class="imgContainer">
-      <div class="Image">
-        {
-          employee && (
-            <DynamicImage
-              imagePath={employee.img}
-              altText={employee.name}
-              width={400}
-              height={400}
-            />
-          )
-        }
+<a href=`teamsingle/${employee?.slug}`>
+  <div class="cardWrapper">
+    <div class="card">
+      <div class="imgContainer">
+        <div class="Image">
+          {
+            employee && (
+              <DynamicImage
+                imagePath={employee.img}
+                altText={employee.name}
+                width={400}
+                height={400}
+              />
+            )
+          }
+        </div>
+        <p class="jobTitle large">{employee?.title}</p>
       </div>
-      <p class="jobTitle large">{employee?.title}</p>
-    </div>
-    <div class="text">
-      <h3>{employee?.name}</h3>
-      <p class="jobTitle">{employee?.title}</p>
-      <p>
-        {employee?.description}
-      </p>
-      <div class="icons">
-        <Instagram width={32} height={32} class="my-icon" />
-        <Facebook width={32} height={32} class="my-icon" />
+      <div class="text">
+        <h3>{employee?.name}</h3>
+        <p class="jobTitle">{employee?.title}</p>
+        <p>
+          {employee?.description}
+        </p>
+        <div class="icons">
+          <Instagram width={32} height={32} class="my-icon" />
+          <Facebook width={32} height={32} class="my-icon" />
+        </div>
       </div>
     </div>
   </div>
-</div>
+</a>
 
 <style>
   @layer components {
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
     .cardWrapper {
       container-type: inline-size;
+      border-radius: 25px;
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
     }
     @container (width < 500px) {
       .card {
