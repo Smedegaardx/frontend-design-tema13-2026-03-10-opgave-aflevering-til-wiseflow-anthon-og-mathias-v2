@@ -1,7 +1,6 @@
 ---
 import ServiceCard from "./ServiceCard.astro";
 import servicesData from "@data/services.json";
-import DynamicImage from "@helpers/DynamicImage.astro";
 ---
 
 <div class="services">
@@ -10,14 +9,40 @@ import DynamicImage from "@helpers/DynamicImage.astro";
 
 <style>
   @layer components {
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-block-start: -6rem;
-      position: relative;
-      z-index: 1;
-      padding: 0 8.5rem 4rem;
-      gap: 1.5rem;
+    @media (width > 900px) {
+      .services {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-block-start: -6rem;
+        position: relative;
+        z-index: 1;
+        padding: 0 8.5rem 4rem;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+    }
+    @media (width < 900px) {
+      .services {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        --grid-color: oklch(from #ffcc4a l c h / 0.18);
+        --grid-size: 60px;
+        background:
+          radial-gradient(
+            ellipse farthest-side at 60% 60%,
+            #0000 10%,
+            #030712 75%
+          ),
+          conic-gradient(
+              from 180deg at 1px 1px,
+              var(--grid-color) 75%,
+              #0000 0
+            ) -1px -1px /
+            var(--grid-size) var(--grid-size),
+          #030712;
+      }
     }
   }
 </style>

@@ -22,7 +22,6 @@ import SideHeader from "@components/SideHeader.astro";
   <div class="hero-image">
     <Image src={CEOImage} alt="CEO" />
   </div>
-
   <Services />
 </section>
 <style>
@@ -78,13 +77,7 @@ import SideHeader from "@components/SideHeader.astro";
       display: flex;
       align-items: center;
       gap: 1rem;
-    }
-
-    :global(.services) {
-      grid-area: services;
-      margin-block-start: -8rem;
-      position: relative;
-      z-index: 1;
+      flex-wrap: wrap;
     }
 
     p {
@@ -110,8 +103,43 @@ import SideHeader from "@components/SideHeader.astro";
       bottom: -0.5rem;
       left: -8.5rem;
       width: 120%;
-      height: 3px;
+      height: 5px;
       background: #ffcc4a;
+      background-image: linear-gradient(
+        to right,
+        black,
+        rgba(0, 128, 128, 0) 150px
+      );
+    }
+    @media (width > 900px) {
+      :global(.services) {
+        grid-area: services;
+        margin-block-start: -8rem;
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    @media (width < 900px) {
+      .hero {
+        display: block;
+      }
+      .hero-content {
+        padding: 3rem;
+        h1 {
+          width: auto;
+          &::after {
+            background-image: linear-gradient(
+              to right,
+              black,
+              rgba(0, 128, 128, 0) 300px
+            );
+          }
+        }
+        .hero-buttons {
+          justify-content: center;
+        }
+      }
     }
   }
 </style>
