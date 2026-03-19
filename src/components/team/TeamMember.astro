@@ -28,7 +28,7 @@ const employee = employees.find((e) => e.id === Number(employeeId));
       </div>
       <div class="text">
         <h3>{employee?.name}</h3>
-        <p class="jobTitle">{employee?.title}</p>
+        <p class="jobTitle small">{employee?.title}</p>
         <p>
           {employee?.description}
         </p>
@@ -58,6 +58,7 @@ const employee = employees.find((e) => e.id === Number(employeeId));
       .card {
         .imgContainer {
           display: grid;
+
           .Image {
             grid-row: 1;
             grid-column: 1;
@@ -78,6 +79,9 @@ const employee = employees.find((e) => e.id === Number(employeeId));
           }
         }
         .text {
+          .small {
+            display: none;
+          }
           padding: 20px;
           text-align: center;
           display: flex;
