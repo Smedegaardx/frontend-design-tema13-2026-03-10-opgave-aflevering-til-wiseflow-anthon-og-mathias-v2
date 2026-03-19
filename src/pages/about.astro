@@ -6,10 +6,17 @@ import OurTeam from "@components/about/OurTeam.astro";
 import OurVisionSection from "@components/about/OurVisionSection.astro";
 import Corevalues from "@components/Corevalues.astro";
 import Faq from "@components/about/Faq.astro";
+import SideHeader from "@components/SideHeader.astro";
 ---
 
 <Layout>
   <Navbar />
+  <SideHeader
+    side="right"
+    page="About"
+    text="Our strength lies in the collaboration between our talented teams and esteemed clients. We cultivate a workplace that champions innovation, promotes peak performance, and guarantees client satisfaction."
+    heading="Igniting Innovation"
+  />
   <OurVisionSection />
   <Corevalues theme="light" btnTheme="black" />
   <OurTeam />

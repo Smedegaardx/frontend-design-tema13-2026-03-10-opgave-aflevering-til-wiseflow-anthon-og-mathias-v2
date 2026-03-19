@@ -1,8 +1,22 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/index/Hero.astro";
+import Navbar from "@components/Navbar.astro";
+import ExpectationsSection from "@components/index/ExpectationsSection.astro";
+import FinancialSection from "@components/index/FinancialSection.astro";
+import ExperienceSection from "@components/index/ExperienceSection.astro";
+import Corevalues from "@components/Corevalues.astro";
+import Contact from "@components/index/Contact.astro";
+import Footer from "@components/Footer.astro";
 ---
 
 <Layout>
+  <Navbar />
   <Hero />
+  <ExpectationsSection />
+  <FinancialSection />
+  <ExperienceSection />
+  <Corevalues theme="dark" btnTheme="white" />
+  <Contact />
+  <Footer />
 </Layout>
