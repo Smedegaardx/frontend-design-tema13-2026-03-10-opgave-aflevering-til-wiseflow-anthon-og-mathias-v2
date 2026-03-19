@@ -1,68 +1,88 @@
-# Opgaveskabelon til "Figma til kode"
+##Refleksion
 
-Se opgavebeskrivelsen på Fronter.
+Vi valgte fra start at opdele figma dokumentet i forskellige komponenter, for at få et overblik over hvordan vi nemmest kunne kode det komponentbaseret. Det gjorde meget gavn, da det også blev meget nemmere at dele det op blandt os.
 
-## Medfølgende Data
+Derefter gik vi i gang med at kode de forskellige komponenter, og tog dem et efter et. Det gjorde det nemt at smide det ind på deres respektive page til sidst.
 
-Der medfølger indholdsdata i form af lokale JSON-filer, som du kan bruge til din opgave. Det er ikke et krav til opgaven, men det kan gøre det nemmere og hurtigere at få tekst og billeder ind i dit projekt.
+Vi valgte at kigge på responsiviteten som det sidste, da vi selv skulle finde ud af hvordan det skulle se ud. Det gik relativt nemt for, men der kom et par benspænd på enkelte komponenter, især hvor `grid-row` og `grid-column` var blevet brugt.
 
-> [!NOTE]
-> Bemærk, at CaseStudy-siden allerede inkluderer data fra en lokal JSON-fil.
-> Bemærk også, at ikke alle billeder fra Figma-filen er i det lokale indholdsdata.
+Desuden kigger vi også først på rigtigt at implementere tokens til sidst, hvilket en anden gang klart vil være noget af det første som vil blive sat op, da det skabte lidt problemer ifølge med at skulle gennemgå alt og ændre allerede opsatte `font-sizes` fx.
 
-Dokumentationen til anvendelsen af dataene finder du på: [https://frontend-design-theme.netlify.app/](https://frontend-design-theme.netlify.app/).
+Alt i alt har det været en spændende og udfordrende opgave, hvor vi skulle sammensætte alt det vi har lært på temaet.
+###Teknikker og principper
 
-Her er et eksempel på, hvordan du kan bruge dataene i dine Astro-komponenter:
+Vi har gjort brug af `--flow-space` i flere af vores komponenter. Det har hjulpet med at gøre stylingen mere uniform og nemmere at styre.
 
-```astro
-import employees from "@data/employees.json";
+.flow > _ + _ {
+margin-block-start: var(--flow-space, 1em);
+}
 
-console.log(employees);
-```
+Vi gjorde brug af `@container` queries i vores component, som ikke kun gjorde det muligt at bruge responsivt, men også at kunne bruge samme component flere steder, selvom stylingen skulle være lidt anderledes. Dette kan ses i sektionen `Our Team`, hvor vi brugte samme komponent som bruges på selve team siden.
 
-## Brug af hjælpekomponenter
+@container (width < 420px) {
+.card {
+.imgContainer {
+display: grid;
 
-### DynamicImage.astro (`@helpers/DynamicImage.astro`)
+         .Image {
+           grid-row: 1;
+           grid-column: 1;
+           border-radius: 25px;
+           overflow: clip;
+         }
+         .jobTitle {
+           background-color: var(--color-ui-primary);
+           color: var(--color-on-ui-primary);
+           padding: 0.2rem 1.2rem;
+           border-radius: 25px;
+           text-align: center;
+           grid-row: 1;
+           grid-column: 1;
+           align-self: end;
+           justify-self: end;
+           margin: 15px;
+         }
+       }
 
-Brug denne komponent til at vise billeder dynamisk fra lokale datafiler. Du skal blot sende stien fra datasættet direkte til komponenten.
+( et udklip)
 
-Eksempel med data:
+Til vores overordnede layout har vi brugt følgende css
 
-```astro
-{employees.map((employee) => (
-  <DynamicImage
-    imagePath={employee.img}
-    altText={employee.name}
-    width={200}
-    height={200}
-  />
-))}
-```
+body {
+display: grid;
+grid-template-columns:
+[full-start] 1fr [content-start] minmax(0, 75rem)
+[content-end] 1fr [full-end];
+}
 
-### DynamicIcon.astro (`@helpers/DynamicIcon.astro`)
+header,
+footer,
+main,
+section {
+display: grid;
+grid-template-columns: subgrid;
+grid-column: full;
 
-`DynamicIcon` bruges til at vise SVG-ikoner dynamisk baseret på et navn fra dine data.
+> :not(&) {
+> grid-column: content;
+> }
+> }
 
-Eksempel med data:
+Den fungerer ved at lave et grid med 3 kolonner, hvor den midterste kolonne indeholder det content vi har på siden, samtidigt med at baggrundsfarverne stadigvæk kan fylde hele viewportens bredde. Hvis man så ønsker noget indhold skal gå helt ud til kanterne, kan man give den “grid-column: full;”.
 
-```astro
-{employee.social_links.map((link) => (
-  <DynamicIcon name={link.icon} />
-))}
-```
+###Defensive CSS
 
-Her vises et ikon for hvert socialt medie, hvor `icon`-feltet matcher filnavnet på SVG-ikonet i `src/icons/`.
+Vi har gjort brug af `flex-wrap` hvor det giver mening i forhold til responsivitet.
 
----
+###Progressive enhancement
 
-## Import af SVG-ikoner direkte
+Vi har brugt @supports på vores “login” knap i navbaren, så vi at den ser ordentlig ud, uanset om brugerens browser understøtter anchor-name eller ej.
 
-Du kan importere SVG-ikoner direkte i dine komponenter ved at importere dem:
+###Organisering af css
 
-```astro
-import Checkmark from "@icons/checkmark.svg";
+Vores globale css består af vores overordnede grid, der går igen på alle siderne. Derudover har vi også vores fonts, samt font-sizes hvor vi har brugt vores tokens. Ellers er vores css meget komponentbaseret, selvfølgelig bortset fra farver mm. som vi har fra tokens.
 
-<Checkmark width={32} height={32} class="my-icon" />
-```
+Set tilbage kunne vi godt have haft flere ting i vores globale css, eksempelvis indeholder alle sektionerne en titel, et “eyebrow” og en beskrivelse, det har vi stylet hver gang vi har lavet et komponent, men det havde selvfølgelig givet mening at samle det som klasser i den globale css i stedet for.
 
-Se evt. `src/pages/svgs.astro` for flere eksempler på direkte import og brug af SVG-ikoner.
+Venlig Hilsen,
+Anthon og Mathias
