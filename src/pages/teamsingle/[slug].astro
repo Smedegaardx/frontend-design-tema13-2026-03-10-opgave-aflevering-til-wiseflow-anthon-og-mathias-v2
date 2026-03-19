@@ -3,7 +3,7 @@ import employees from "@data/employees.json";
 import Layout from "@layouts/Layout.astro";
 import Footer from "@components/Footer.astro";
 import Navbar from "@components/Navbar.astro";
-import FullProfile from "@components/FullProfile.astro";
+import FullProfile from "@components/team/FullProfile.astro";
 
 export async function getStaticPaths() {
   return employees.map((employee) => ({
