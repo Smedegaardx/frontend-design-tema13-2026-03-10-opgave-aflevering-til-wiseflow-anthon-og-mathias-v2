@@ -97,5 +97,15 @@ const { theme, btnTheme } = Astro.props;
         color: var(--color-text-muted);
       }
     }
+    @media (width < 900px) {
+      .card-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (width < 600px) {
+      .card-container {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 </style>

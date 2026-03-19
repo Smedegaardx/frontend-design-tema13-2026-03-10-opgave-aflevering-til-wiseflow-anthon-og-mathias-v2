@@ -14,7 +14,7 @@ import { Image } from "astro:assets";
     </div>
     <div class="text-content">
       <p class="tag">We'll work with you</p>
-      <h1>What To Expect</h1>
+      <h3>What To Expect</h3>
       <p class="details">
         Our collaboration is built on transparency, efficiency, and measurable
         results. Together, we create strategies tailored to your unique needs
@@ -93,14 +93,12 @@ import { Image } from "astro:assets";
       }
 
       .tag {
-        font-size: 0.8125rem;
         letter-spacing: 0.18em;
         text-transform: uppercase;
         margin: 0;
       }
 
-      h1 {
-        font-size: clamp(2rem, 4vw, 2.75rem);
+      h3 {
         font-weight: 800;
         margin: 0;
       }
@@ -111,6 +109,15 @@ import { Image } from "astro:assets";
         max-width: 52ch;
         margin: 0;
         opacity: 0.85;
+      }
+    }
+    @media (width < 900px) {
+      section article {
+        display: block;
+      }
+      .text-content,
+      .card-content {
+        margin-block-start: 1rlh;
       }
     }
   }

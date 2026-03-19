@@ -34,7 +34,20 @@
 }
 
 /* ==== Spacing ==== */
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
 
 /* ==== Typography ==== */
+/* @link https://utopia.fyi/type/calculator?c=360,10,1.125,1200,16,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 
-/* ==== Border Radii ==== */
+:root {
+  --step--2: clamp(0.4938rem, 0.4643rem + 0.1313vw, 0.5628rem);
+  --step--1: clamp(0.5556rem, 0.4721rem + 0.3707vw, 0.7502rem);
+  --step-0: clamp(0.625rem, 0.4643rem + 0.7143vw, 1rem);
+  --step-1: clamp(0.7031rem, 0.4332rem + 1.1998vw, 1.333rem);
+  --step-2: clamp(0.791rem, 0.3685rem + 1.8779vw, 1.7769rem);
+  --step-3: clamp(0.8899rem, 0.2562rem + 2.8166vw, 2.3686rem);
+  --step-4: clamp(1.0011rem, 0.077rem + 4.1071vw, 3.1573rem);
+  --step-5: clamp(1.1263rem, -0.1948rem + 5.8713vw, 4.2087rem);
+}

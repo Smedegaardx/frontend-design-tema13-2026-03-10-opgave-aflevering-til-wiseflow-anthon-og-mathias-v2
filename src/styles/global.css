@@ -14,38 +14,65 @@
   src: url(/src/assets/fonts/Cabin-Medium.ttf);
 }
 
-h1, h2, h3, h4, h5{
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: Cabin;
 }
 
-p, a{
+p,
+a {
   font-family: Lato;
 }
 
-.flow > * + * {
-  margin-block-start: var(--flow-space, 1em);
+/* Font-sizes */
+h1 {
+  font-size: var(--step-5);
+}
+
+h2 {
+  font-size: var(--step-4);
+}
+
+h3 {
+  font-size: var(--step-3);
+}
+
+h4 {
+  font-size: var(--step-2);
+}
+
+h5 {
+  font-size: var(--step-1);
+}
+
+p,
+ul {
+  font-size: var(--step-0);
 }
 
 /* Grid */
-  body {
-    display: grid;
-    grid-template-columns:
-      [full-start] 1fr [content-start] minmax(0, 75rem)
-      [content-end] 1fr [full-end];
-  }
+body {
+  display: grid;
+  grid-template-columns:
+    [full-start] 1fr [content-start] minmax(0, 75rem)
+    [content-end] 1fr [full-end];
+}
 
-  header,
-  footer,
-  main,
-  section {
-    display: grid;
-    grid-template-columns: subgrid;
-    grid-column: full;
-    > :not(&) {
-      grid-column: content;
-    }
+header,
+footer,
+main,
+section {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: full;
+  > :not(&) {
+    grid-column: content;
   }
+}
 
-  .breakout {
-    grid-column: full;
-  }
+.breakout {
+  grid-column: full;
+}
