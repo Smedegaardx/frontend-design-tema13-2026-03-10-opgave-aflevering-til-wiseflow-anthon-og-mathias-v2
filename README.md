@@ -1,4 +1,4 @@
-## Refleksion
+# Refleksion
 
 Vi valgte fra start at opdele figma dokumentet i forskellige komponenter, for at få et overblik over hvordan vi nemmest kunne kode det komponentbaseret. Det gjorde meget gavn, da det også blev meget nemmere at dele det op blandt os.
 
@@ -10,7 +10,7 @@ Desuden kigger vi også først på rigtigt at implementere tokens til sidst, hvi
 
 Alt i alt har det været en spændende og udfordrende opgave, hvor vi skulle sammensætte alt det vi har lært på temaet.
 
-### Teknikker og principper
+## Teknikker og principper
 
 Vi har gjort brug af `--flow-space` i flere af vores komponenter. Det har hjulpet med at gøre stylingen mere uniform og nemmere at styre.
 
@@ -79,15 +79,15 @@ section {
 
 Den fungerer ved at lave et grid med 3 kolonner, hvor den midterste kolonne indeholder det content vi har på siden, samtidigt med at baggrundsfarverne stadigvæk kan fylde hele viewportens bredde. Hvis man så ønsker noget indhold skal gå helt ud til kanterne, kan man give den `grid-column: full;`.
 
-### Defensive CSS
+## Defensive CSS
 
 Vi har gjort brug af `flex-wrap` hvor det giver mening i forhold til responsivitet.
 
-### Progressive enhancement
+## Progressive enhancement
 
 Vi har brugt `@supports` på vores “login” knap i navbaren, så vi at den ser ordentlig ud, uanset om brugerens browser understøtter anchor-name eller ej.
 
-### Organisering af css
+## Organisering af css
 
 Vores globale css består af vores overordnede grid, der går igen på alle siderne. Derudover har vi også vores fonts, samt font-sizes hvor vi har brugt vores tokens. Ellers er vores css meget komponentbaseret, selvfølgelig bortset fra farver mm. som vi har fra tokens.
 
