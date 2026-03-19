@@ -1,7 +1,11 @@
 ---
+import { Image } from "astro:assets";
 import Phone from "@icons/phone.svg";
 import Clock from "@icons/clock.svg";
 import Pin from "@icons/pin.svg";
+import ContactImage from "@data/images/contact1.webp";
+import ContactImage2 from "@data/images/contact2.webp";
+import ContactImage3 from "@data/images/contact3.webp";
 ---
 
 <section>
@@ -47,10 +51,10 @@ import Pin from "@icons/pin.svg";
     <div class="img-container">
       <div class="img-wrapper" id="pic1">
         <div class="green-box"></div>
-        <img src="/src/data/images/contact1.webp" alt="" />
+        <Image src={ContactImage} alt="" id="pic1" />
       </div>
-      <img src="/src/data/images/contact2.webp" alt="" id="pic2" />
-      <img src="/src/data/images/contact3.webp" alt="" id="pic3" />
+      <Image src={ContactImage2} alt="" id="pic2" />
+      <Image src={ContactImage3} alt="" id="pic3" />
     </div>
   </div>
 </section>
