@@ -1,0 +1,142 @@
+---
+import experienceData from "@data/experience.json";
+---
+
+<section>
+  <div class="content-wrapper">
+    <div class="text-container">
+      <p class="tag">experience</p>
+      <h2>More than 25 years of experience</h2>
+      <p class="description">3000+ our clients are insured around the World</p>
+    </div>
+    <div class="stat-container">
+      {
+        experienceData.stats.map(({ label, value }) => (
+          <div class="stat-wrapper">
+            <div class="stat" style={`--value: ${value}`} />
+            <p class="stat-label">{label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <style>
+    @property --animatedNumber {
+      syntax: "<number>";
+      initial-value: 0;
+      inherits: true;
+    }
+
+    @layer components {
+      section {
+        background-color: var(--color-surface-highlight);
+        padding: 8rem 4rem;
+        &:hover .stat {
+          --animatedNumber: var(--value);
+        }
+      }
+
+      .content-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 50px;
+      }
+
+      .tag {
+        font-size: 0.8125rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        margin: 0;
+      }
+
+      .description {
+        font-size: 1rem;
+        line-height: 1.65;
+        max-width: 52ch;
+        margin: 0;
+        opacity: 0.85;
+      }
+
+      .stat-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        p {
+          font-family: cabin;
+          font-size: 20px;
+        }
+      }
+
+      .stat-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        width: 100%;
+      }
+      .stat {
+        --animatedNumber: 0;
+        --percentage: calc(var(--animatedNumber) * 1%);
+        --bd: 5px;
+        position: relative;
+        border: var(--bd) solid #0000;
+        content: "";
+        width: 150px;
+        height: 150px;
+        background:
+          radial-gradient(
+              circle at 50% calc(var(--bd) / 2),
+              #0000 calc(var(--bd) / 2),
+              #0000 0
+            )
+            border-box,
+          linear-gradient(var(--color-surface-highlight)) padding-box,
+          conic-gradient(
+              var(--color-surface-secondary) var(--percentage),
+              #daae3c 0
+            )
+            border-box;
+        border-radius: 999px;
+        display: grid;
+        container: stat / inline-size;
+        transition: --animatedNumber 2s;
+
+        @media (prefers-reduced-motion: reduce) {
+          transition: none;
+          --animatedNumber: var(--value);
+        }
+
+        &::after {
+          counter-reset: val round(var(--animatedNumber));
+          grid-area: 1 / 1;
+          content: counter(val) "%";
+          place-self: center;
+          font-size: 30cqw;
+          font-variant-numeric: tabular-nums;
+          font-feature-settings: "tnum";
+          font-weight: 800;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: calc(var(--bd) * 5);
+          aspect-ratio: 1;
+          border-radius: calc(infinity * 1px);
+          border: 4px solid white;
+          background: black;
+          offset: border-box var(--percentage);
+          offset-anchor: 50% calc(50% - var(--bd) / 2);
+        }
+      }
+    }
+  </style>
+</section>

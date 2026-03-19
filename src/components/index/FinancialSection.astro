@@ -1,7 +1,7 @@
 ---
 import ArrowL from "@icons/arrow-left.svg";
 import ArrowR from "@icons/arrow--right.svg";
-import FinancialCard from "@components/FinancialCard.astro";
+import FinancialCard from "@components/index/FinancialCard.astro";
 ---
 
 <section>
@@ -10,22 +10,43 @@ import FinancialCard from "@components/FinancialCard.astro";
     <h2>Financial Projections</h2>
     <p class="description">
       Financial projections are essential for planning and monitoring a
-      company’s performance. They provide insights into potential revenue,
+      company's performance. They provide insights into potential revenue,
       expenses, and profitability over specific periods.
     </p>
     <div class="btn-container">
-      <a href="#99" class="arrow">
+      <button class="arrow" id="scroll-left" aria-label="Scroll left">
         <ArrowL width={32} height={32} class="my-icon" />
-      </a>
-      <a href="#99" class="arrow">
+      </button>
+      <button class="arrow" id="scroll-right" aria-label="Scroll right">
         <ArrowR width={32} height={32} class="my-icon" />
-      </a>
+      </button>
     </div>
   </article>
-  <div class="card-container breakout">
+  <div class="card-container breakout" id="card-scroll">
     <FinancialCard />
   </div>
 </section>
+
+<script>
+  const container = document.getElementById("card-scroll") as HTMLElement;
+  const btnLeft = document.getElementById("scroll-left") as HTMLButtonElement;
+  const btnRight = document.getElementById("scroll-right") as HTMLButtonElement;
+
+  function getScrollAmount(): number {
+    const firstCard = container.firstElementChild as HTMLElement;
+    if (!firstCard) return 300;
+    const gap = parseFloat(getComputedStyle(container).columnGap) || 16;
+    return firstCard.offsetWidth + gap;
+  }
+
+  btnRight.addEventListener("click", () => {
+    container.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+  });
+
+  btnLeft.addEventListener("click", () => {
+    container.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+  });
+</script>
 
 <style>
   @layer components {
@@ -92,6 +113,8 @@ import FinancialCard from "@components/FinancialCard.astro";
       justify-content: center;
       flex-shrink: 0;
       background-color: var(--color-ui-primary);
+      border: none;
+      cursor: pointer;
 
       .my-icon {
         width: 24px;
@@ -105,10 +128,22 @@ import FinancialCard from "@components/FinancialCard.astro";
     }
 
     .card-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      display: flex;
       gap: 1rem;
-      padding-inline: max(1rem, 50% - 1200px / 2);
+      padding-inline: max(1rem, (100% - 75rem) / 2);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      > * {
+        flex: 0 0 min(400px, 70vw);
+        scroll-snap-align: start;
+      }
     }
   }
 </style>
