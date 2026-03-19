@@ -7,7 +7,6 @@ import ArrowRight from "@icons/arrow--right.svg";
   <h2>{service.title}</h2>
   <p>{service.description}</p>
   <a href="#0">{service.buttonText} <ArrowRight stroke-width={2.5} /></a>
-  <!-- <a> burde måske være en variant af en component -->
 </article>
 
 <style>
@@ -15,18 +14,20 @@ import ArrowRight from "@icons/arrow--right.svg";
     article {
       background: var(--color-blue-700-transparent);
       color: var(--color-on-surface-elevated);
-      padding: 2rem; /* Dette burde være en token */
-      border-radius: 20px; /* Dette burde være en token */
+      padding: 2rem;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
+
     a {
-      display: inline flex;
-      gap: 1ch;
+      display: inline-flex;
+      gap: 0.5ch;
+      align-items: center;
       color: var(--color-action);
       font-weight: bold;
-
-      svg {
-        inline-size: 16px;
-      }
+      margin-top: auto;
     }
   }
 </style>
