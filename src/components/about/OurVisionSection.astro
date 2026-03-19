@@ -89,5 +89,17 @@ import CheckmarkCard from "@components/CheckmarkCard.astro";
         justify-content: space-around;
       }
     }
+    @media (width < 900px) {
+      section .grid {
+        grid-template-columns: 1fr;
+      }
+      .imgContainer {
+        margin-block-start: 2rlh;
+      }
+      section .counters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   }
 </style>

@@ -145,5 +145,15 @@ import FinancialCard from "@components/index/FinancialCard.astro";
         scroll-snap-align: start;
       }
     }
+    @media (width < 900px) {
+      article {
+        grid-template-columns: 1fr;
+      }
+      .btn-container {
+        grid-column: 1;
+        grid-row: 4;
+        justify-self: start;
+      }
+    }
   }
 </style>

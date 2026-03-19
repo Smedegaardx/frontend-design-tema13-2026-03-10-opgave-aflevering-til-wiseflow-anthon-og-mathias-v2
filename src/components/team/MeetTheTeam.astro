@@ -54,5 +54,21 @@ import Button from "@components/Button.astro";
         align-self: end;
       }
     }
+    @media (width < 900px) {
+      #members {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (width < 600px) {
+      #members {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (width < 1200px) {
+      .grid,
+      #members {
+        margin-inline: 1rlh;
+      }
+    }
   }
 </style>

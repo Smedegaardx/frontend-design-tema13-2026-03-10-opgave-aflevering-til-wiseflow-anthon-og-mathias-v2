@@ -1,13 +1,11 @@
 ---
 import employees from "@data/employees.json";
-import DynamicImage from "@components/helpers/DynamicIcon.astro";
+import DynamicImage from "@components/helpers/DynamicImage.astro";
 import Facebook from "@icons/facebook.svg";
 import Instagram from "@icons/instagram.svg";
 
 const { slug } = Astro.props;
 const employee = employees.find((e) => e.slug === slug);
-console.log("this is the slug", slug);
-console.log("this is the employee", employee);
 ---
 
 <article>

@@ -53,5 +53,10 @@ import Button from "@components/Button.astro";
         gap: 48px;
       }
     }
+    @media (width < 900px) {
+      article {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 </style>

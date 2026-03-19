@@ -111,5 +111,14 @@ import { Image } from "astro:assets";
         opacity: 0.85;
       }
     }
+    @media (width < 900px) {
+      section article {
+        display: block;
+      }
+      .text-content,
+      .card-content {
+        margin-block-start: 1rlh;
+      }
+    }
   }
 </style>
