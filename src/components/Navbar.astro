@@ -82,13 +82,11 @@ import Button from "@components/Button.astro";
       }
     }
 
-    /* Enhanced: anchor positioning for supporting browsers */
     @supports (anchor-name: --x) {
       #login-btn {
         anchor-name: --login-btn;
       }
 
-      /* #login-popover { */
       #login-popover:popover-open {
         position-anchor: --login-btn;
         top: 0px;
